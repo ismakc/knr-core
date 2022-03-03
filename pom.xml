@@ -1,0 +1,252 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>es.evilmonkey.kinaro</groupId>
+	<artifactId>knr-core</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<name>knr-core</name>
+
+	<properties>
+		<java.version>17</java.version>
+		<resource.delimiter>@</resource.delimiter>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- Dependency versions -->
+		<assertj-core.version>3.22.0</assertj-core.version>
+		<checkstyle.version>9.3</checkstyle.version>
+		<junit-jupiter.version>5.8.2</junit-jupiter.version>
+		<lombok.version>1.18.22</lombok.version>
+		<lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
+		<mapstruct.version>1.4.2.Final</mapstruct.version>
+		<maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<mockito.version>4.3.1</mockito.version>
+		<pitest-maven.version>1.7.4</pitest-maven.version>
+		<pitest-junit5-plugin.version>0.15</pitest-junit5-plugin.version>
+		<spring-javaformat.version>0.0.31</spring-javaformat.version>
+		<spring-data-commons.version>2.6.0</spring-data-commons.version>
+		<slf4j-api.version>1.7.32</slf4j-api.version>
+		<jackson-databind.version>2.13.1</jackson-databind.version>
+		<spring-boot-autoconfigure.version>2.6.2</spring-boot-autoconfigure.version>
+		<spring-context.version>5.3.14</spring-context.version>
+		<spring-web.version>5.3.14</spring-web.version>
+		<jackson-annotations.version>2.13.1</jackson-annotations.version>
+	</properties>
+
+	<dependencies>
+		<!-- Web dependencies -->
+
+		<!-- Data structure dependencies -->
+
+		<!-- Third-party api dependencies -->
+
+		<!-- Developments tools dependencies -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj-core.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-annotations.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-web.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-context.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-autoconfigure</artifactId>
+			<version>${spring-boot-autoconfigure.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-databind.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>${spring-data-commons.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Build plugins -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<!-- Test plugins -->
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+			</plugin>
+			<!-- Development plugins -->
+			<plugin>
+				<groupId>io.spring.javaformat</groupId>
+				<artifactId>spring-javaformat-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!-- Build plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.mapstruct</groupId>
+								<artifactId>mapstruct-processor</artifactId>
+								<version>${mapstruct.version}</version>
+							</path>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>${lombok.version}</version>
+							</path>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok-mapstruct-binding</artifactId>
+								<version>${lombok-mapstruct-binding.version}</version>
+							</path>
+						</annotationProcessorPaths>
+					</configuration>
+				</plugin>
+				<!-- Test plugins -->
+				<plugin>
+					<groupId>org.pitest</groupId>
+					<artifactId>pitest-maven</artifactId>
+					<version>${pitest-maven.version}</version>
+					<dependencies>
+						<dependency>
+							<groupId>org.pitest</groupId>
+							<artifactId>pitest-junit5-plugin</artifactId>
+							<version>${pitest-junit5-plugin.version}</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<mutators>
+							<mutator>STRONGER</mutator>
+						</mutators>
+						<outputFormats>HTML</outputFormats>
+						<targetClasses>
+							<param>es.evilmonkey.kinaro.*</param>
+						</targetClasses>
+						<targetTests>
+							<param>es.evilmonkey.kinaro.*Test</param>
+						</targetTests>
+						<threads>4</threads>
+						<timestampedReports>false</timestampedReports>
+					</configuration>
+				</plugin>
+				<!-- Development plugins -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>${maven-checkstyle-plugin.version}</version>
+					<configuration>
+						<propertyExpansion>config_loc=src/checkstyle</propertyExpansion>
+						<configLocation>src/checkstyle/checkstyle.xml</configLocation>
+						<includeTestSourceDirectory>true</includeTestSourceDirectory>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.puppycrawl.tools</groupId>
+							<artifactId>checkstyle</artifactId>
+							<version>${checkstyle.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>io.spring.javaformat</groupId>
+							<artifactId>spring-javaformat-checkstyle</artifactId>
+							<version>${spring-javaformat.version}</version>
+						</dependency>
+					</dependencies>
+					<executions>
+						<execution>
+							<id>checkstyle-validation</id>
+							<phase>validate</phase>
+							<inherited>true</inherited>
+							<goals>
+								<goal>check</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>io.spring.javaformat</groupId>
+					<artifactId>spring-javaformat-maven-plugin</artifactId>
+					<version>${spring-javaformat.version}</version>
+					<executions>
+						<execution>
+							<phase>validate</phase>
+							<inherited>true</inherited>
+							<goals>
+								<goal>validate</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>io/spring/javaformat</groupId>
+					<artifactId>spring-javaformat-intellij-idea-plugin</artifactId>
+					<version>${spring-javaformat.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+
+</project>
